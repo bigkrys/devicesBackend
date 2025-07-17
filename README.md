@@ -137,6 +137,23 @@ aPaaSBackend/
 - 路径: POST /api/devices/:deviceId/maintenance
 - 功能：添加设备维护记录
 
+### 设备统计
+- 路径: GET /api/devices/statistics
+- 功能：统计设备总数、按类型和状态分组数量
+- 权限：需要管理员权限
+- 返回示例：
+```json
+{
+  "success": true,
+  "data": {
+    "total": 100,
+    "byType": { "sensor": 60, "gateway": 40 },
+    "byStatus": { "online": 80, "offline": 15, "error": 5 },
+    "byLocation": { "北京": 30, "上海": 20 }
+  }
+}
+```
+
 ## 5. 错误处理
 统一的错误响应格式：
 ```javascript

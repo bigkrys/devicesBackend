@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { AppError } from '../../../middlewares/error';
+import { AppError } from '../../middlewares/error';
 import { IDevice } from './model';
 
 const locationSchema = Joi.object({

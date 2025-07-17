@@ -3,6 +3,7 @@ import { Context } from 'koa';
 import { DeviceService } from '../services/device.service';
 import { Device, DeviceStatus, DeviceType } from '../types';
 import { authMiddleware } from '../middlewares/auth.middleware';
+import { DeviceStatsController } from '../api/devices/stats.controller';
 
 const router = new Router({
   prefix: '/api/devices'
@@ -127,12 +128,6 @@ router.patch('/:id/status', async (ctx: Context) => {
 });
 
 // 获取设备统计信息
-router.get('/statistics', async (ctx: Context) => {
-  const stats = await deviceService.getStatistics();
-  ctx.body = {
-    success: true,
-    data: stats
-  };
-});
+router.get('/statistics', DeviceStatsController.getStats);
 
 export default router; 
